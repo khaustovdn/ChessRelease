@@ -10,5 +10,12 @@ namespace ChessRelease.Application.Models
         {
             buttons = butt;
         }
+        public Button[,] Move(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            buttons = Steps.StepsDiagonal(IcurrFigure,JcurrFigure,currFigure,map,buttons);
+            buttons = Steps.StepsWall(IcurrFigure, JcurrFigure, currFigure, map, buttons);
+
+            return buttons;
+        }
     }
 }
