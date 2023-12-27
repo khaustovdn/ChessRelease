@@ -17,5 +17,24 @@ namespace ChessRelease.Application.Models
 
             return buttons;
         }
+        public bool Check(int IcurrFigure, int  JcurrFigure,int[,] map)
+        {
+            int[] tmpDiagonal = { -1, -1 };
+            int[] tmpWall = { -1, -1 };
+            tmpWall = Steps.StepsWall(IcurrFigure, JcurrFigure, map);
+            tmpDiagonal = Steps.StepsDiagonal(IcurrFigure, JcurrFigure, map);
+            if (tmpWall[0] == -1)
+            {
+                if(tmpDiagonal[0] == -1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
+        }
     }
 }
