@@ -10,5 +10,22 @@ namespace ChessRelease.Application.Models
         {
             buttons = butt;
         }
+        
+        public Button[,] Move(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            buttons = Steps.StepsDiagonal(IcurrFigure, JcurrFigure, currFigure, map, buttons);
+            return buttons;
+        }
+        public bool Check(int IcurrFigure, int JcurrFigure, int[,] map)
+        {
+            int[] tmp = { -1, -1 };
+           
+            tmp = Steps.StepsDiagonal(IcurrFigure, JcurrFigure, map);
+            if (tmp[0] == -1)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
