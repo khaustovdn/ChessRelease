@@ -46,6 +46,8 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Application\Models\Board.cs" />
+        <Compile Include="Application\Models\Check.cs" />
         <Compile Include="Application\Models\Figure.cs" />
         <Compile Include="Application\Models\Horse.cs" />
         <Compile Include="Application\Models\IFigure.cs" />
@@ -53,6 +55,10 @@
         <Compile Include="Application\Models\Queen.cs" />
         <Compile Include="Application\Models\Rook.cs" />
         <Compile Include="Application\Models\Steps.cs" />
+        <Compile Include="Application\Presenter\IPresenter.cs" />
+        <Compile Include="Application\Presenter\Presenter.cs" />
+        <Compile Include="Application\Views\IView.cs" />
+        <Compile Include="Application\Views\View.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>
@@ -82,10 +88,6 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config"/>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Application\Presenter\" />
-      <Folder Include="Application\Views\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
