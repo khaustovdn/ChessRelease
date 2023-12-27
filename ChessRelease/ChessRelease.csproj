@@ -48,6 +48,7 @@
     <ItemGroup>
         <Compile Include="Application\Models\Board.cs" />
         <Compile Include="Application\Models\Check.cs" />
+        <Compile Include="Application\Models\Elephant.cs" />
         <Compile Include="Application\Models\Figure.cs" />
         <Compile Include="Application\Models\Horse.cs" />
         <Compile Include="Application\Models\IFigure.cs" />
