@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace ChessRelease.Application.Models
 {
     public class Figure : IFigure
