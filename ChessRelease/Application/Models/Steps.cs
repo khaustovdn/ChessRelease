@@ -389,5 +389,77 @@ namespace ChessRelease.Application.Models
             }
             return buttons;
         }
+        public static Button[,] StepHorse(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map, Button[,] buttons)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure - 1))// вниз влево
+            {
+                if (map[IcurrFigure + 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure - 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure + 2 * dir, JcurrFigure - 1]  = StepColor(buttons[IcurrFigure + 2 * dir, JcurrFigure - 1]);
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure + 1))// вниз вправо
+            {
+
+                if (map[IcurrFigure + 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure + 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure + 2 * dir, JcurrFigure + 1] = StepColor(buttons[IcurrFigure + 2 * dir, JcurrFigure + 1]);
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure + 1))// вверх вправо
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure + 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure - 2 * dir, JcurrFigure + 1] = StepColor(buttons[IcurrFigure - 2 * dir, JcurrFigure + 1]);
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure - 1))// вверх влево
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure - 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure - 2 * dir, JcurrFigure - 1] = StepColor(buttons[IcurrFigure - 2 * dir, JcurrFigure - 1]);
+                }
+            }
+            return buttons;
+        }
+        public static bool StepHorse(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure - 1))// вниз влево
+            {
+                if (map[IcurrFigure + 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure - 1] % 10 ==  1)
+                {
+                    return true;                                                                                              
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure + 1))// вниз вправо
+            {
+
+                if (map[IcurrFigure + 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure + 1] / 10 % 10 == 1)
+                {
+                    return true;
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure + 1))// вверх вправо
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure + 1] % 10 == 1)
+                {
+                    return true;
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure - 1))// вверх влево
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure - 1] / 10 % 10 == 1)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
