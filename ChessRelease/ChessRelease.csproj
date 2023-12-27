@@ -48,8 +48,11 @@
     <ItemGroup>
         <Compile Include="Application\Models\Figure.cs" />
         <Compile Include="Application\Models\Horse.cs" />
+        <Compile Include="Application\Models\IFigure.cs" />
         <Compile Include="Application\Models\King.cs" />
         <Compile Include="Application\Models\Queen.cs" />
+        <Compile Include="Application\Models\Rook.cs" />
+        <Compile Include="Application\Models\Steps.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>
