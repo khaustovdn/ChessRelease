@@ -46,6 +46,10 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Application\Models\Figure.cs" />
+        <Compile Include="Application\Models\Horse.cs" />
+        <Compile Include="Application\Models\King.cs" />
+        <Compile Include="Application\Models\Queen.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>
@@ -77,7 +81,6 @@
         <None Include="App.config"/>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Application\Models\" />
       <Folder Include="Application\Presenter\" />
       <Folder Include="Application\Views\" />
     </ItemGroup>
