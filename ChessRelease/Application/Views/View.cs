@@ -1,25 +1,19 @@
 using System.Windows.Forms;
 using ChessRelease.Application.Presenter;
 
-namespace ChessRelease.Application.Views
+namespace ChessRelease.Application.Views;
+
+public class View : Form, IView
 {
-    public class View : Form, IView
+    public View(IPresenter presenter)
     {
-        public IPresenter _presenter { get; set; }
+        Presenter = presenter;
+        Render();
+    }
 
-        public View(IPresenter presenter)
-        {
-            _presenter = presenter;
-            Render();
-        }
-        public  void Render()
-        {
+    public IPresenter Presenter { get; set; }
 
-        }
-
-        public void ShowWindow()
-        {
-            System.Windows.Forms.Application.Run(this);
-        }
+    public void Render()
+    {
     }
 }
