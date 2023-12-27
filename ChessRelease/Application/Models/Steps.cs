@@ -197,5 +197,327 @@ namespace ChessRelease.Application.Models
             return tmp;
 
         }
+        public static int[] StepsDiagonal(int IcurrFigure, int JcurrFigure, int[,] map)
+        {
+            int j = JcurrFigure;
+            int[] tmp = {-1,-1};
+            int player = map[IcurrFigure, JcurrFigure] / 10;
+
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j + 1); i++)//по диагонали
+            {
+                j++;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i,j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j - 1); i++)// по диагонали
+            {
+                j--;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i, j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j + 1); i--)// по диагонали
+            {
+                j++;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i, j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j - 1); i--)// по диагонали
+            {
+                j--;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i, j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            return tmp;
+        }
+        public static Button[,] StepsDiagonal(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map, Button[,] buttons)
+        {
+            int j = JcurrFigure;
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j + 1); i++)//по диагонали
+            {
+                j++;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j - 1); i++)// по диагонали
+            {
+                j--;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j + 1); i--)// по диагонали
+            {
+                j++;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j - 1); i--)// по диагонали
+            {
+                j--;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return buttons;
+        }
+        public static Button[,] StepHorse(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map, Button[,] buttons)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure - 1))// вниз влево
+            {
+                if (map[IcurrFigure + 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure - 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure + 2 * dir, JcurrFigure - 1]  = StepColor(buttons[IcurrFigure + 2 * dir, JcurrFigure - 1]);
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure + 1))// вниз вправо
+            {
+
+                if (map[IcurrFigure + 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure + 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure + 2 * dir, JcurrFigure + 1] = StepColor(buttons[IcurrFigure + 2 * dir, JcurrFigure + 1]);
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure + 1))// вверх вправо
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure + 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure - 2 * dir, JcurrFigure + 1] = StepColor(buttons[IcurrFigure - 2 * dir, JcurrFigure + 1]);
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure - 1))// вверх влево
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure - 1] % 10 != 1)
+                {
+                    buttons[IcurrFigure - 2 * dir, JcurrFigure - 1] = StepColor(buttons[IcurrFigure - 2 * dir, JcurrFigure - 1]);
+                }
+            }
+            return buttons;
+        }
+        public static bool StepHorse(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure - 1))// вниз влево
+            {
+                if (map[IcurrFigure + 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure - 1] % 10 ==  1)
+                {
+                    return true;                                                                                              
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure + 1))// вниз вправо
+            {
+
+                if (map[IcurrFigure + 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure + 2 * dir, JcurrFigure + 1] / 10 % 10 == 1)
+                {
+                    return true;
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure + 1))// вверх вправо
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure + 1] % 10 == 1)
+                {
+                    return true;
+                }
+            }
+            if (Check.InsideBorder(IcurrFigure - 2 * dir, JcurrFigure - 1))// вверх влево
+            {
+
+                if (map[IcurrFigure - 2 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure - 2 * dir, JcurrFigure - 1] / 10 % 10 == 1)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static Button[,] StepFigure(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map, Button[,] buttons)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure - 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure - 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure - 1] / 10 != currFigure / 10) // пешка бьёт в сторону, если не  пусто и не его союзник
+                {
+                    buttons[IcurrFigure + 1 * dir, JcurrFigure - 1] = StepColor(buttons[IcurrFigure + 1 * dir, JcurrFigure - 1]);
+                }
+            }
+
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure + 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure + 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure + 1] / 10 != currFigure / 10)
+                {
+                    buttons[IcurrFigure + 1 * dir, JcurrFigure + 1] = StepColor(buttons[IcurrFigure + 1 * dir, JcurrFigure + 1]);
+                }
+            }
+
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure))
+            {
+
+                if (map[IcurrFigure + 1 * dir, JcurrFigure] == 0)
+                {
+                    buttons[IcurrFigure + 1 * dir, JcurrFigure] = StepColor(buttons[IcurrFigure + 1 * dir, JcurrFigure]);
+                }
+                if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure))
+                {
+                    if ((IcurrFigure == 1 || IcurrFigure == 6) && currFigure % 10 == 6)
+                    {
+                        buttons[IcurrFigure + 2 * dir, JcurrFigure] = StepColor(buttons[IcurrFigure + 2 * dir, JcurrFigure]);
+                    }
+                }
+
+            }
+
+            return buttons;
+        }
+        public static bool StepFigure(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure - 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure - 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure + 1 * dir, JcurrFigure - 1] % 10 == 1) // пешка бьёт в сторону, если не  пусто и не его союзник
+                {
+                    return true;
+                }
+            }
+
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure + 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure + 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure + 1 * dir, JcurrFigure + 1] % 10 == 1 )
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
