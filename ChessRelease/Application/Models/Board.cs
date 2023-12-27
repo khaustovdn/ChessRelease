@@ -29,6 +29,7 @@ namespace ChessRelease.Application.Models
                 {25,24,23,22,21,23,24,25},
             };
         }
+
         public Button CreateButton(int i, int j)
         {
             Button butt = new Button();
@@ -38,6 +39,37 @@ namespace ChessRelease.Application.Models
             butt = SkinButton(ColorChangedButton(butt, j, i), j, i);
             buttons[j, i] = butt;
             return butt;
+        }
+        
+        private Button SkinButton(Button butt, int i, int j)
+        {
+            switch (map[i, j] / 10)
+            {
+                case 1:
+                    Image part = new Bitmap(50, 50);
+                    Graphics g = Graphics.FromImage(part);
+                    g.DrawImage(chessSprites, new Rectangle(0, 0, 50, 50), 0 + 150 * (map[i, j] % 10 - 1), 0, 150, 150, GraphicsUnit.Pixel);
+                    butt.BackgroundImage = part;
+                    break;
 
+                case 2:
+                    Image part1 = new Bitmap(50, 50);
+                    Graphics g1 = Graphics.FromImage(part1);
+                    g1.DrawImage(chessSprites, new Rectangle(0, 0, 50, 50), 0 + 150 * (map[i, j] % 10 - 1), 150, 150, 150, GraphicsUnit.Pixel);
+                    butt.BackgroundImage = part1;
+                    break;
+            }
+            return butt;
+        }
+        private void ChangePlayer()
+        {
+            switch (player)
+            {
+                case 1:
+                    player = 2; break;
+                case 2:
+                    player = 1; break;
+            }
+        }
     }
 }
