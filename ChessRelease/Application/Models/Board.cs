@@ -71,5 +71,46 @@ namespace ChessRelease.Application.Models
                     player = 1; break;
             }
         }
+        private Button ColorChangedButton(Button butt, int i, int j)
+        {
+            if (i == 0 || i % 2 == 0)
+            {
+                if (j == 0 || j % 2 == 0)
+                    butt.BackColor = Color.White;
+                else
+                    butt.BackColor = Color.Brown;
+            }
+            else
+            {
+                if (j == 0 || j % 2 == 0)
+                    butt.BackColor = Color.Brown;
+                else
+                    butt.BackColor = Color.White;
+            }
+            return butt;
+        }
+        private void ColorChangedAllButton()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (i == 0 || i % 2 == 0)
+                    {
+                        if (j == 0 || j % 2 == 0)
+                            buttons[i, j].BackColor = Color.White;
+                        else
+                            buttons[i, j].BackColor = Color.Brown;
+                    }
+                    else
+                    {
+                        if (j == 0 || j % 2 == 0)
+                            buttons[i, j].BackColor = Color.Brown;
+                        else
+                            buttons[i, j].BackColor = Color.White;
+                    }
+                }
+            }
+        }
     }
 }
