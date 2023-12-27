@@ -197,5 +197,197 @@ namespace ChessRelease.Application.Models
             return tmp;
 
         }
+        public static int[] StepsDiagonal(int IcurrFigure, int JcurrFigure, int[,] map)
+        {
+            int j = JcurrFigure;
+            int[] tmp = {-1,-1};
+            int player = map[IcurrFigure, JcurrFigure] / 10;
+
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j + 1); i++)//по диагонали
+            {
+                j++;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i,j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j - 1); i++)// по диагонали
+            {
+                j--;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i, j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j + 1); i--)// по диагонали
+            {
+                j++;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i, j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j - 1); i--)// по диагонали
+            {
+                j--;
+                if (map[i, j] % 10 == 1 && player != map[i, j] / 10)
+                {
+                    tmp[0] = i;
+                    tmp[1] = j;
+                    return tmp;
+                }
+                if (map[i, j] % 10 != 0)
+                {
+                    break;
+                }
+
+            }
+            return tmp;
+        }
+        public static Button[,] StepsDiagonal(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map, Button[,] buttons)
+        {
+            int j = JcurrFigure;
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j + 1); i++)//по диагонали
+            {
+                j++;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure + 1; Check.InsideBorder(i, j - 1); i++)// по диагонали
+            {
+                j--;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j + 1); i--)// по диагонали
+            {
+                j++;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            j = JcurrFigure;
+            for (int i = IcurrFigure - 1; Check.InsideBorder(i, j - 1); i--)// по диагонали
+            {
+                j--;
+                if (map[i, j] / 10 == 0)
+                {
+                    buttons[i, j] = StepColor(buttons[i, j]);
+                    continue;
+                }
+                else
+                {
+                    if (map[i, j] / 10 != currFigure / 10)
+                    {
+                        if (map[i, j] % 10 == 1)
+                        {
+                            break;
+                        }
+                        buttons[i, j] = StepColor(buttons[i, j]);
+                        break;
+                    }
+                    else
+                    {
+                        if (map[i, j] / 10 == currFigure / 10)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return buttons;
+        }
     }
 }
