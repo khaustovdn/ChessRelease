@@ -461,5 +461,63 @@ namespace ChessRelease.Application.Models
             }
             return false;
         }
+        public static Button[,] StepFigure(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map, Button[,] buttons)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure - 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure - 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure - 1] / 10 != currFigure / 10) // пешка бьёт в сторону, если не  пусто и не его союзник
+                {
+                    buttons[IcurrFigure + 1 * dir, JcurrFigure - 1] = StepColor(buttons[IcurrFigure + 1 * dir, JcurrFigure - 1]);
+                }
+            }
+
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure + 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure + 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure + 1] / 10 != currFigure / 10)
+                {
+                    buttons[IcurrFigure + 1 * dir, JcurrFigure + 1] = StepColor(buttons[IcurrFigure + 1 * dir, JcurrFigure + 1]);
+                }
+            }
+
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure))
+            {
+
+                if (map[IcurrFigure + 1 * dir, JcurrFigure] == 0)
+                {
+                    buttons[IcurrFigure + 1 * dir, JcurrFigure] = StepColor(buttons[IcurrFigure + 1 * dir, JcurrFigure]);
+                }
+                if (Check.InsideBorder(IcurrFigure + 2 * dir, JcurrFigure))
+                {
+                    if ((IcurrFigure == 1 || IcurrFigure == 6) && currFigure % 10 == 6)
+                    {
+                        buttons[IcurrFigure + 2 * dir, JcurrFigure] = StepColor(buttons[IcurrFigure + 2 * dir, JcurrFigure]);
+                    }
+                }
+
+            }
+
+            return buttons;
+        }
+        public static bool StepFigure(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            int dir = currFigure / 10 == 1 ? 1 : -1;
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure - 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure - 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure - 1] / 10 != currFigure / 10 && map[IcurrFigure + 1 * dir, JcurrFigure - 1] % 10 == 1) // пешка бьёт в сторону, если не  пусто и не его союзник
+                {
+                    return true;
+                }
+            }
+
+            if (Check.InsideBorder(IcurrFigure + 1 * dir, JcurrFigure + 1))
+            {
+                if (map[IcurrFigure + 1 * dir, JcurrFigure + 1] != 0 && map[IcurrFigure + 1 * dir, JcurrFigure + 1] / 10 != currFigure / 10 && map[IcurrFigure + 1 * dir, JcurrFigure + 1] % 10 == 1 )
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
