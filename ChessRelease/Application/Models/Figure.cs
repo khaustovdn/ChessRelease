@@ -1,24 +1,25 @@
 using System.Windows.Forms;
 
-namespace ChessRelease.Application.Models
+namespace ChessRelease.Application.Models;
+
+public class Figure : IFigure
 {
-    public class Figure : IFigure
+    public Figure(Button[,] butt)
     {
-        public int number { get; set; } = 6;
-        public Button[,] buttons { get; set; } = new Button[8, 8];
-        public Figure(Button[,] butt )
-        {
-            buttons = butt;
-        }
-        public Button[,] Move(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
-        {
-            
-            buttons = Steps.StepFigure(IcurrFigure, JcurrFigure, currFigure, map, buttons);  
-            return buttons;
-        }
-        public bool Check(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
-        {
-            return Steps.StepFigure(IcurrFigure, JcurrFigure, currFigure, map);
-        }
+        Buttons = butt;
+    }
+
+    public int Number { get; set; } = 6;
+    public Button[,] Buttons { get; set; }
+
+    public Button[,] Move(int icurrFigure, int jcurrFigure, int currFigure, int[,] map)
+    {
+        Buttons = Steps.StepFigure(icurrFigure, jcurrFigure, currFigure, map, Buttons);
+        return Buttons;
+    }
+
+    public bool Check(int icurrFigure, int jcurrFigure, int currFigure, int[,] map)
+    {
+        return Steps.StepFigure(icurrFigure, jcurrFigure, currFigure, map);
     }
 }
