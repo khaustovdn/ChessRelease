@@ -8,5 +8,15 @@ namespace ChessRelease.Application.Models
         {
             buttons = butt;
         }
+        public Button[,] Move(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            buttons = Steps.StepHorse(IcurrFigure, JcurrFigure, currFigure, map, buttons); 
+            return buttons;
+        }
+
+        public bool Check(int IcurrFigure, int JcurrFigure, int currFigure, int[,] map)
+        {
+            return Steps.StepHorse(IcurrFigure, JcurrFigure,currFigure, map);
+        }
     }
 }
