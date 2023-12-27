@@ -62,6 +62,7 @@ namespace ChessRelease.Application.Models
             }
             return butt;
         }
+        
         private void ChangePlayer()
         {
             switch (player)
@@ -72,6 +73,7 @@ namespace ChessRelease.Application.Models
                     player = 1; break;
             }
         }
+        
         private Button ColorChangedButton(Button butt, int i, int j)
         {
             if (i == 0 || i % 2 == 0)
@@ -90,6 +92,7 @@ namespace ChessRelease.Application.Models
             }
             return butt;
         }
+        
         private void ColorChangedAllButton()
         {
             for (int i = 0; i < 8; i++)
@@ -113,6 +116,7 @@ namespace ChessRelease.Application.Models
                 }
             }
         }
+        
         private int[] FindKing()
         {
             int[] tmp = King.KingFor(map, player);
